@@ -14,9 +14,14 @@ In addition, we implemented `Mol GA` and `GEGL` by adopting the original impleme
  (NeurIPS, 2020)](https://proceedings.neurips.cc/paper/2020/hash/8ba6c657b03fc7c8dd4dff8e45defcd2-Abstract.html)
 (code: https://github.com/sungsoo-ahn/genetic-expert-guided-learning)
 
+Also, our codes are based on the following papers.
+- Multi-objecetive: [Sample-efficient Multi-objective Molecular Optimization with GFlowNets (NeurIPS, 2023)](https://arxiv.org/abs/2302.04040)
+(code: https://github.com/violet-sto/HN-GFN)
+- SARS-CoV-2: [De novo Drug Design using Reinforcement Learning with Multiple GPT Agent (NeurIPS, 2023)](https://arxiv.org/abs/2401.06155)
+(code: https://github.com/HXYfighter/MolRL-MGPT)
 
 
-## Installation
+## Installation (PMO)
 
 Clone project and create environment with conda:
 ```
@@ -31,13 +36,36 @@ pip install -r requirements.txt
 **Note**: we highly recommend using Python 3.7, and PyTorch 1.12.1. Importantly, we use PyTDC 0.4.0 instead of 0.3.6.
 
 For other baseline, please see `README_PMO.md`; we recommend using Python 3.8 for `GP BO` and `requirement_gpbo.txt`.
+When you use Python 3.8, you can install rdkit with `pip install rdkit-pypi`.
+
+To run other experiments, including multi-objective and SARS-CoV-2, please see `README.md` in each directory.
 
 
 ## Usage
+#### PMO benchmark
+
 ```
+cd pmo
 CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --task simple --wandb online --oracle qed --seed 0
 ```
 
 To run genetic_GFN with SELFIES, use `genetic_gfn_selfies` instead of `genetic_gfn`.
+
+#### Multi-objective
+
+```
+cd multi_objective
+CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --alpha_vector 3,4,2,1 --seed 0
+CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --alpha_vector 1,1 --objectives gsk3b,jnk3 --seed 0
+
+CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --task simple --wandb online --oracle qed --seed 0
+```
+
+#### PMO benchmark
+
+```
+cd pmo
+CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --task simple --wandb online --oracle qed --seed 0
+```
 
 

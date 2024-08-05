@@ -196,3 +196,10 @@ dream_results
 
 # GEGL
 main/gegl/results
+
+
+sars_cov2/docking
+sars_cov2/log
+sars_cov2/outputs
+sars_cov2/runs
+sars_cov2/
