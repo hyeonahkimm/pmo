@@ -46,26 +46,27 @@ To run other experiments, including multi-objective and SARS-CoV-2, please see `
 
 ```
 cd pmo
-CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --task simple --wandb online --oracle qed --seed 0
+python run.py genetic_gfn --task simple --wandb online --oracle qed --seed 0
 ```
 
 To run genetic_GFN with SELFIES, use `genetic_gfn_selfies` instead of `genetic_gfn`.
+
 
 #### Multi-objective
 
 ```
 cd multi_objective
-CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --alpha_vector 3,4,2,1 --seed 0
-CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --alpha_vector 1,1 --objectives gsk3b,jnk3 --seed 0
-
-CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --task simple --wandb online --oracle qed --seed 0
+python run.py genetic_gfn --alpha_vector 3,4,2,1 --seed 0
+python run.py genetic_gfn --alpha_vector 1,1 --objectives gsk3b,jnk3 --seed 0
 ```
 
-#### PMO benchmark
+
+#### SARS-CoV-2
 
 ```
-cd pmo
-CUDA_VISIBLE_DEVICES=0 python run.py genetic_gfn --task simple --wandb online --oracle qed --seed 0
+cd sars_cov2
+python genetic_gfn/train.py genetic_gfn --oracle docking_RdRp_mpo --wandb online --rank_coefficient 0.05 --seed 0
+python genetic_gfn/train.py genetic_gfn --oracle docking_PLPro_7JIR_mpo --wandb online --rank_coefficient 0.05 --seed 0
 ```
 
 
